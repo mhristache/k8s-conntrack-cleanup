@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 import subprocess
 import os
@@ -71,4 +71,14 @@ def run_cmd(cmd):
 
 
 if __name__ == "__main__":
-    run('default')
+    import argparse
+
+    parser = argparse.ArgumentParser(
+        description='Cleanup conntrack table when a K8s pod is deleted')
+    parser.add_argument('-n', '--namespace',
+                        dest='namespace',
+                        required=True,
+                        help="a K8s namespace")
+    args = parser.parse_args()
+
+    run(args.namespace)
