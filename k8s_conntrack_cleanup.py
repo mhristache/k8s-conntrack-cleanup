@@ -71,4 +71,4 @@ def run_cmd(cmd):
 
 
 if __name__ == "__main__":
-    run('epg')
+    run('default')
